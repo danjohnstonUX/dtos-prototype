@@ -1,0 +1,90 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - edit the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Data Portal prototype
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+{{ breadcrumb({
+href: "/",
+text: "Home"
+}) }}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+
+  <div class="nhsuk-grid-column-two-thirds">
+
+    <h1>Screening Data Portal</h1>
+
+    <p class="nhsuk-body-l nhsuk-u-margin-bottom-7">
+      To access the Screening Data Portal you will need an <a href="#">NHS Identity Smartcard</a> and an associated role
+      which is assigned by <a href="#">Registration Authorities.</a>
+    </p>
+
+    <a class="nhsuk-button nhsuk-u-margin-bottom-9" href="smartcard" type="submit">
+      Login with NHS Identity
+    </a>
+
+    <details class="nhsuk-details">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          I don't have an NHS Identity Smartcard
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+        <p>If you don't have an NHS Identity Smartcard you will need to speak to your local RA (Registration Authority)
+          in order to get one.</p>
+        <a href="#">Apply for Care ID</a>
+      </div>
+    </details>
+
+    <details class="nhsuk-details">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          I have an NHS Identity Smartcard but I have forgotten my 6 digit passcode
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+        <p>If you have forgotten your NHS Identity Smartcard 6 digit passcode and can not access CSMS please register
+          for self-service smartcard unlock, or speak to your local RA (Registration Authority).</p>
+        <a href="#">Register for self-service smartcard unlock</a>
+      </div>
+    </details>
+
+    <details class="nhsuk-details">
+      <summary class="nhsuk-details__summary">
+        <span class="nhsuk-details__summary-text">
+          I have a smartcard and pin but can’t access CSMS
+        </span>
+      </summary>
+      <div class="nhsuk-details__text">
+        <p>If you have a legitimate relationship to cervical screening and cannot access CSMS. Your service lead will
+          need to request access permissions through your local RA (Registration Authority).</p> <a
+          href="#">Find your Registration Authority</a>
+        <p></p>
+      </div>
+    </details>
+
+  </div>
+
+</div>
+{% endblock %}
