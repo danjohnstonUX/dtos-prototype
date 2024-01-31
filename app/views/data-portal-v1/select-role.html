@@ -33,21 +33,47 @@
 
     <div class="nhsuk-grid-column-two-thirds">
 
-      {{ input({
-        label: {
-          text: "Enter your 6 digit smartcard passcode ",
-          classes: "nhsuk-label--xl",
-          isPageHeading: true
+      {{ radios({
+        "idPrefix": "role",
+        "name": "role",
+        "fieldset": {
+          "legend": {
+            "text": "Choose a role to login with",
+            "classes": "nhsuk-fieldset__legend--xl",
+            "isPageHeading": true
+          }
         },
-        id: "passcode",
-        name: "passcode",
-        classes: "nhsuk-input--width-10",
-        inputmode: "numeric"
+        "items": [
+          {
+            "value": "sample-taker",
+            "text": "Sample taker"
+          },
+          {
+            "value": "clerical-admin",
+            "text": "Clerical admin"
+          },
+          {
+            "value": "bio-medical-scientist",
+            "text": "Bio-medical Scientist"
+          },
+          {
+            "value": "csas-officer",
+            "text": "CSAS Screening Officer"
+          },
+          {
+            "value": "csas-manager",
+            "text": "CSAS Screening Manager"
+          },
+          {
+            "value": "csas-qa",
+            "text": "CSAS Quality Assurance"
+          }
+        ]
       }) }}
 
       {{ button({
         "text": "Continue",
-        "href": "select-role"
+        "href": "search"
       }) }}
 
     </div>  

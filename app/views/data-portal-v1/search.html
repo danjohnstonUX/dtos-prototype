@@ -1,0 +1,148 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - edit the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  Data Portal prototype
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+  {{ breadcrumb({
+    href: "/",
+    text: "Home"
+  }) }}
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <h1>Search for a patient</h1>
+
+      <p><strong>Reminder: </strong>You are searching a national database. Use NHS number to search where possible. If not available, use as much search criteria as you can and take care to select the correct individual.</p>
+
+      <p class="nhsuk-u-margin-bottom-7">If you require PDS results, please include Last name and Date of birth in your search criteria.</p>
+
+      {% set nhsNumberContent %}  
+        {{ input({
+          "label": {
+          "text": "NHS Number",
+          "classes": "nhsuk-label--s nhsuk-u-margin-bottom-1"
+          },
+          "id": "input-width-10",
+          "name": "test-width-10",
+          "classes": "nhsuk-input--width-10"
+        }) }}
+        {{ button({
+          "text": "Find patient",
+          "href": "#"
+        }) }}
+      {% endset -%} 
+
+      {% set demographicsContent %}
+        
+          {{ input({
+            label: {
+              "html": 'First name (optional)',
+              "classes": "nhsuk-label--s nhsuk-u-margin-bottom-1"
+            },
+            "classes": "nhsuk-u-width-two-thirds",
+            "id": "first-name",
+            "name": "first-name"
+          }) }}
+        
+          {{ input({
+            label: {
+              "html": 'Surname',
+              "classes": "nhsuk-label--s nhsuk-u-margin-bottom-1"
+            },
+            "classes": "nhsuk-u-width-two-thirds",
+            "id": "surname",
+            "name": "surname"
+          }) }}
+        
+          {{ dateInput({
+            "id": "example",
+            "namePrefix": "dob",
+            "fieldset": {
+              "legend": {
+                "text": "Date of birth",
+                "classes": "nhsuk-label--s nhsuk-u-margin-bottom-1",
+                "isPageHeading": false
+              }
+            },
+            "hint": {
+              "text": "For example, 15 3 1984"
+            },
+            "items": [
+              {
+                "name": "day",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "month",
+                "classes": "nhsuk-input--width-2"
+              },
+              {
+                "name": "year",
+                "classes": "nhsuk-input--width-4"
+              }
+            ]
+          }) }}
+
+          {{ input({
+            label: {
+              "html": 'Postcode',
+              "classes": "nhsuk-label--s nhsuk-u-margin-bottom-1"
+            },
+            "classes": "nhsuk-u-width-one-third",
+            "id": "postcode",
+            "name": "postcode"
+          }) }}
+
+          {{ button({
+            "text": "Find patient",
+            "href": "#"
+          }) }}
+
+      {% endset -%}
+      
+      {{ tabs({ 
+        items: [ 
+        { 
+          label: "NHS Number search", 
+          id: "nhs-number", 
+          panel: { 
+            html: nhsNumberContent 
+            } 
+          }, 
+          { 
+            label: "Demographics search", 
+            id: "demographics", 
+            panel: { 
+              html: demographicsContent 
+            } 
+          }
+        ] 
+      }) }}
+
+    </div>  
+
+  </div>
+{% endblock %}
